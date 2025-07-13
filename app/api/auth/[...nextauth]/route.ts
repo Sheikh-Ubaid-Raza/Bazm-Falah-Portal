@@ -26,13 +26,21 @@ async function initializeMockUsers() {
       passwordHash: await bcrypt.hash("ubaidraza", 9),
       name: "Ubaid",
     })
+    mockUsers.push({
+      id: "4",
+      email: "canonyousuf@gmail.com",
+      passwordHash: await bcrypt.hash("canonyousuf", 9),
+      name: "Canon",
+    })
+    console.log("Mock users initialized.")
   }
 }
 
 // Call initialization once
 initializeMockUsers()
 
-export const authOptions: NextAuthOptions = {
+// authOptions should NOT be exported directly
+const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -69,8 +77,8 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/login", // Corrected path for login page
-    signOut: "/logout", // Optional: specify a sign out page
+    signIn: "/login", // Ensure this matches your actual login page path
+    signOut: "/logout", // Ensure this matches your actual logout page path (if you have one)
     error: "/login", // Redirect to login page on error
   },
   session: {
@@ -97,9 +105,9 @@ export const authOptions: NextAuthOptions = {
     },
   },
   // You MUST set AUTH_SECRET in your environment variables for production.
-  // It iss used to sign and encrypt session tokens.
+  // It's used to sign and encrypt session tokens.
   // Generate a strong secret: openssl rand -base64 32
-  secret: process.env.AUTH_SECRET, // Standardized to AUTH_SECRET
+  secret: process.env.AUTH_SECRET,
 }
 
 const handler = NextAuth(authOptions)
