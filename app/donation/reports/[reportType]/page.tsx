@@ -104,7 +104,7 @@ const getReportContent = (reportId: string = "unknown") => {
       return (
         <div className="text-center text-gray-600">
           <p className="text-xl font-semibold mb-2">Report Type Not Found</p>
-          <p>The report type "{reportId}" is not recognized.</p>
+          <p>The report type {reportId} is not recognized.</p>
         </div>
       );
   }
