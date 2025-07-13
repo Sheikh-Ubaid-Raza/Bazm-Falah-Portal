@@ -13,8 +13,6 @@ import Link from "next/link";
 import { Search, ArrowLeft } from "lucide-react";
 
 // Function to get dynamic search results based on searchParam
-// This is reusable for other dynamic search pages
-// Accepts a string parameter with a default value to handle undefined cases
 const getSearchResults = (searchParam: string = "unknown") => {
   const dummyResults = [
     { id: "D001", name: "Alice Johnson", amount: "$100.00", date: "2023-01-15", method: "Cash" },
@@ -61,7 +59,6 @@ const getSearchResults = (searchParam: string = "unknown") => {
 };
 
 // Main component for dynamic donation search
-// Uses useParams to get the dynamic searchParam from the URL
 export default function SearchDonationPage() {
   const params = useParams();
   const searchParam = params.searchParam;
@@ -92,14 +89,4 @@ export default function SearchDonationPage() {
       </Card>
     </div>
   );
-}
-
-// getStaticPaths function to pre-render specific searchParam paths
-// This ensures initial routes are statically generated, with fallback for dynamic ones
-export async function getStaticPaths() {
-  const paths = [
-    { params: { searchParam: "alice" } },
-    { params: { searchParam: "bob" } },
-  ];
-  return { paths, fallback: "blocking" };
 }

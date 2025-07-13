@@ -7,8 +7,6 @@ import Link from "next/link";
 import { Search, ArrowLeft, User, Phone, Mail } from "lucide-react";
 
 // Function to get dynamic search results based on searchParam
-// This is reusable for other dynamic search pages
-// Accepts a string parameter with a default value to handle undefined cases
 const getSearchResults = (searchParam: string = "unknown") => {
   const dummyResults = [
     { id: "1001", name: "John Doe", phone: "123-456-7890", email: "john.doe@example.com" },
@@ -64,7 +62,6 @@ const getSearchResults = (searchParam: string = "unknown") => {
 };
 
 // Main component for dynamic member search
-// Uses useParams to get the dynamic searchParam from the URL
 export default function SearchMemberPage() {
   const params = useParams();
   const searchParam = params.searchParam;
@@ -95,14 +92,4 @@ export default function SearchMemberPage() {
       </Card>
     </div>
   );
-}
-
-// getStaticPaths function to pre-render specific searchParam paths
-// This ensures initial routes are statically generated, with fallback for dynamic ones
-export async function getStaticPaths() {
-  const paths = [
-    { params: { searchParam: "john" } },
-    { params: { searchParam: "jane" } },
-  ];
-  return { paths, fallback: "blocking" };
 }

@@ -5,11 +5,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { FileText, ArrowLeft} from "lucide-react";
+import { FileText, ArrowLeft } from "lucide-react";
 
 // Function to get dynamic report content based on reportId
-// This is reusable for other dynamic report pages
-// Accepts a string parameter with a default value to handle undefined cases
 const getReportContent = (reportId: string = "unknown") => {
   switch (reportId) {
     case "daily":
@@ -96,7 +94,6 @@ const getReportContent = (reportId: string = "unknown") => {
 };
 
 // Main component for dynamic ledger reports
-// Uses useParams to get the dynamic reportId from the URL
 export default function LedgerReportsPage() {
   const params = useParams();
   const reportId = params.reportId;
@@ -127,15 +124,4 @@ export default function LedgerReportsPage() {
       </Card>
     </div>
   );
-}
-
-// getStaticPaths function to pre-render specific reportId paths
-// This ensures initial routes are statically generated, with fallback for dynamic ones
-export async function getStaticPaths() {
-  const paths = [
-    { params: { reportId: "daily" } },
-    { params: { reportId: "income" } },
-    { params: { reportId: "expense" } },
-  ];
-  return { paths, fallback: "blocking" };
 }
