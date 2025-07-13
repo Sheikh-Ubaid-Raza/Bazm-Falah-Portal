@@ -16,7 +16,7 @@ export async function middleware(req: NextRequest) {
   }
 
   // Attempt to get the session token from the request
-  const token = await getToken({ req, secret: process.env.AUTH_SECRET }) // Standardized to AUTH_SECRET
+  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET }) // Standardized to NEXTAUTH_SECRET
 
   // If no token is found (user is not authenticated), redirect to the login page
   if (!token) {
