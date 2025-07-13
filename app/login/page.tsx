@@ -92,11 +92,11 @@ function LoginFormContent() {
         </form>
         <div className="text-center text-sm text-gray-600">
           Don&apos;t have an account?{" "}
-          <Link href="/auth/signup" className="text-green-600 hover:underline">
+          <Link href="/signup" className="text-green-600 hover:underline">
             Sign Up
           </Link>
         </div>
-        <Link href="/auth/signup" className="text-green-600 hover:underline">
+        <Link href="/signup" className="text-green-600 hover:underline">
           <Button variant="outline" className="w-full bg-white hover:bg-green-50 text-green-700 border-green-400">
             <UserPlus className="mr-2 h-5 w-5" />
             Register New Account
