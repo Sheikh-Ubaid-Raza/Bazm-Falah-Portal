@@ -1,7 +1,6 @@
 import About from "@/components/About"
 import ContactUs from "@/components/ContactUs"
-import Footer from "@/components/Footer"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Image from "next/image"
 
 export default function HomePage() {

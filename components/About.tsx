@@ -21,7 +21,7 @@ export default function About() {
             through education, charitable activities, and social development
             initiatives. Our mission is to support those in need, promote learning
             opportunities for all ages, and build a brighter future by bringing
-            people together for the greater good. Whether it's through educational
+            people together for the greater good. Whether its through educational
             support, donations, or community outreach, Bazm Falah-ul-Ahbab strives
             to make a positive impact in society. We invite you to join us in our
             journey of compassion, growth, and service. Together, we can build a

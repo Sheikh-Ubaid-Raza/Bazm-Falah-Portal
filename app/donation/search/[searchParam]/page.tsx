@@ -49,7 +49,7 @@ const getSearchResults = (searchParam: string = "unknown") => {
             ) : (
               <TableRow>
                 <TableCell colSpan={5} className="text-center text-gray-600">
-                  No results found for "{searchParam}".
+                  No results found for {searchParam}.
                 </TableCell>
               </TableRow>
             )}

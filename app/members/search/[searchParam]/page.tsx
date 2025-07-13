@@ -55,7 +55,7 @@ const getSearchResults = (searchParam: string = "unknown") => {
         ) : (
           <div className="text-center text-gray-600 col-span-full">
             <p className="text-xl font-semibold mb-2">No Results Found</p>
-            <p>No members found for "{searchParam}".</p>
+            <p>No members found for {searchParam}.</p>
           </div>
         )}
       </div>

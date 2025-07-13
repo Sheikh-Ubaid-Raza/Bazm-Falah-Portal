@@ -97,7 +97,7 @@ export const authOptions: NextAuthOptions = {
     },
   },
   // You MUST set AUTH_SECRET in your environment variables for production.
-  // It's used to sign and encrypt session tokens.
+  // It iss used to sign and encrypt session tokens.
   // Generate a strong secret: openssl rand -base64 32
   secret: process.env.AUTH_SECRET, // Standardized to AUTH_SECRET
 }
