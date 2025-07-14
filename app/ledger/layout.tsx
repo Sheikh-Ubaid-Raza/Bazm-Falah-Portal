@@ -12,6 +12,12 @@ export default function LedgerLayout({ children }: { children: ReactNode }) {
       path: "/ledger/entry",
     },
     {
+      value: "search",
+      label: "Search Ledger",
+      content: children,
+      path: "/ledger/search",
+    },
+    {
       value: "reports",
       label: "Ledger Reports",
       content: children,

@@ -26,7 +26,6 @@ async function initializeMockUsers() {
       passwordHash: await bcrypt.hash("canonyousuf", 9),
       name: "Canon",
     })
-    console.log("Mock users initialized.")
   }
 }
 

@@ -50,7 +50,7 @@ export default function About() {
             </div>
           </div>
           <div className="text-center">
-            <Link href="/members">
+            <Link href="/members/new">
               <Button className="bg-green-600 hover:bg-green-700 text-white my-4">
                 Join Us Today
               </Button>

@@ -1,7 +1,10 @@
 import About from "@/components/About"
 import ContactUs from "@/components/ContactUs"
+import { Button } from "@/components/ui/button"
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { LogOut } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function HomePage() {
   return (
@@ -20,6 +23,14 @@ export default function HomePage() {
               needy, promote learning, and strive for a brighter future together.
             </p>
           </CardContent>
+          <div className="text-center">
+              <Link href="/members/new">
+                <Button className="bg-white hover:bg-green-700 text-green-700 hover:text-white border-1 border-green-700">
+                  <LogOut className="mr-2 h-5 w-5" />
+                  Join Us
+                </Button>
+              </Link>
+          </div>
         </div>
       </div>
       <About />

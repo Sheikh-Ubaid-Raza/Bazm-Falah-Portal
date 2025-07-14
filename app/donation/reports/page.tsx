@@ -75,7 +75,7 @@ export default function DonationReportsPage() {
         </div>
 
         <h3 className="text-2xl font-semibold text-green-800 mb-6">Sample Report Data</h3>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto text-green-100">
           <Table className="min-w-full bg-green-50 border border-green-200 rounded-lg">
             <TableHeader>
               <TableRow className="bg-green-100 border-b border-green-200">
