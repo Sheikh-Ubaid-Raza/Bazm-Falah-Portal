@@ -1,9 +1,9 @@
-import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { User, ArrowLeft, BookText, FilePenLineIcon as Signature } from "lucide-react"
+import { User, ArrowLeft, BookText } from "lucide-react" // Removed Signature icon
+import Image from "next/image"
 
 // Dummy data for demonstration. In a real app, you'd fetch this from a database.
 const memberLedgerData = {
@@ -67,13 +67,8 @@ const memberLedgerData = {
   },
 }
 
-interface MemberLedgerPageProps {
-  params: {
-    id: string
-  }
-}
-
-export default function MemberLedgerPage({ params }: MemberLedgerPageProps) {
+// Removed MemberLedgerPageProps interface and defined props inline for clarity
+export default function MemberLedgerPage({ params }: { params: { id: string } }) {
   const { id } = params
   const member = memberLedgerData[id as keyof typeof memberLedgerData] || null
 
@@ -141,10 +136,12 @@ export default function MemberLedgerPage({ params }: MemberLedgerPageProps) {
             <div className="md:col-span-1 flex justify-center items-start">
               <div className="w-36 h-36 border border-green-200 rounded-md flex items-center justify-center overflow-hidden bg-green-50">
                 {member.picture ? (
-                  <img
+                  <Image
                     src={member.picture || "/placeholder.svg"}
                     alt="Member Picture"
                     className="object-cover w-full h-full"
+                    width={250} // Added width
+                    height={250} // Added height
                   />
                 ) : (
                   <User className="h-16 w-16 text-gray-400" />
@@ -189,27 +186,7 @@ export default function MemberLedgerPage({ params }: MemberLedgerPageProps) {
             </Table>
           </div>
 
-          {/* Signatures */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-            <div className="flex flex-col items-center space-y-2 p-4 border border-green-200 rounded-md bg-green-50">
-              <div className="w-full h-24 border-b border-gray-300 flex items-center justify-center text-gray-500">
-                {/* Placeholder for signature input/display */}
-                <p>Signature Area</p>
-              </div>
-              <Label className="text-green-700 font-semibold flex items-center gap-1">
-                <Signature className="h-4 w-4" /> Finance Secretary
-              </Label>
-            </div>
-            <div className="flex flex-col items-center space-y-2 p-4 border border-green-200 rounded-md bg-green-50">
-              <div className="w-full h-24 border-b border-gray-300 flex items-center justify-center text-gray-500">
-                {/* Placeholder for signature input/display */}
-                <p>Signature Area</p>
-              </div>
-              <Label className="text-green-700 font-semibold flex items-center gap-1">
-                <Signature className="h-4 w-4" /> General Secretary
-              </Label>
-            </div>
-          </div>
+          {/* Removed Signatures Section */}
 
           <div className="flex justify-end mt-8">
             <Link href="/ledger/search">
