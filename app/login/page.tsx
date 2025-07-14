@@ -9,16 +9,16 @@ import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import { LogIn, UserPlus, Eye, EyeOff } from "lucide-react"
 import { signIn } from "next-auth/react"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useSearchParams } from "next/navigation"
 
 // This component contains the actual login form and uses useSearchParams
 function LoginFormContent() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState<string | null>(null)
-  const router = useRouter()
+  // const router = useRouter()
   const searchParams = useSearchParams() // This hook is now inside a component wrapped by Suspense
-  const callbackUrl = searchParams.get("callbackUrl") || "/"
+  // const callbackUrl = searchParams.get("callbackUrl") || "/"
   const [showPassword, setShowPassword] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {

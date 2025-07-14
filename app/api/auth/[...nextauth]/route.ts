@@ -26,6 +26,7 @@ async function initializeMockUsers() {
       passwordHash: await bcrypt.hash("canonyousuf", 9),
       name: "Canon",
     })
+    console.log("Mock users initialized.")
   }
 }
 
@@ -96,7 +97,7 @@ const authOptions: NextAuthOptions = {
       }
       return session
     },
-    async redirect({ url, baseUrl }) {
+    async redirect({ baseUrl }) {
       return baseUrl // Always redirect to the home page after successful login
     },
   },

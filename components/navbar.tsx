@@ -9,13 +9,13 @@ import { cn } from "@/lib/utils"
 import { useState } from "react"
 import Image from "next/image"
 import { useSession, signOut } from "next-auth/react"
-import { useRouter } from "next/navigation"
+
 
 export function Navbar() {
   const pathname = usePathname()
   const [isMobileMenuOpen, setIsMobileMenuMenuOpen] = useState(false)
   const { data: session, status } = useSession()
-  const router = useRouter()
+  // const router = useRouter()
 
   const navItems = [
     { name: "Home", href: "/", icon: Home },
