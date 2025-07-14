@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { User, ArrowLeft, BookText } from "lucide-react" // Removed Signature icon
+import { User, ArrowLeft, BookText } from "lucide-react"
 import Image from "next/image"
 
 // Dummy data for demonstration. In a real app, you'd fetch this from a database.
@@ -67,8 +67,8 @@ const memberLedgerData = {
   },
 }
 
-// Removed MemberLedgerPageProps interface and defined props inline for clarity
-export default function MemberLedgerPage({ params }: { params: { id: string } }) {
+// Made the component async to potentially resolve the type error related to PageProps expecting a Promise
+export default async function MemberLedgerPage({ params }: { params: { id: string } }) {
   const { id } = params
   const member = memberLedgerData[id as keyof typeof memberLedgerData] || null
 
@@ -140,8 +140,8 @@ export default function MemberLedgerPage({ params }: { params: { id: string } })
                     src={member.picture || "/placeholder.svg"}
                     alt="Member Picture"
                     className="object-cover w-full h-full"
-                    width={250} // Added width
-                    height={250} // Added height
+                    width={250}
+                    height={250}
                   />
                 ) : (
                   <User className="h-16 w-16 text-gray-400" />
