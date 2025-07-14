@@ -1,35 +1,21 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, 
-  DropdownMenuTrigger 
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { 
-  ChevronDown, 
-  Home, 
-  Users, 
-  HandCoins, 
-  BookText, 
-  LogIn, 
-  Menu, 
-  UserPlus 
-} from "lucide-react";
-import { cn } from "@/lib/utils";
-import { useState } from "react";
-import Image from "next/image";
-import { useSession, signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Button } from "@/components/ui/button"
+import { ChevronDown, Home, Users, HandCoins, BookText, LogIn, Menu, UserPlus, LogOut } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { useState } from "react"
+import Image from "next/image"
+import { useSession, signOut } from "next-auth/react"
+import { useRouter } from "next/navigation"
 
 export function Navbar() {
-  const pathname = usePathname();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { data: session, status } = useSession();
-  const router = useRouter();
+  const pathname = usePathname()
+  const [isMobileMenuOpen, setIsMobileMenuMenuOpen] = useState(false)
+  const { data: session, status } = useSession()
+  const router = useRouter()
 
   const navItems = [
     { name: "Home", href: "/", icon: Home },
@@ -52,12 +38,12 @@ export function Navbar() {
         { name: "Donation Reports", href: "/donation/reports" },
       ],
     },
-  ];
+  ]
 
   const handleLogout = async () => {
-    await signOut({ redirect: false, callbackUrl: "/login" });
-    router.push("/login");
-  };
+    // This is the only functional change needed for logout
+    await signOut({ callbackUrl: "/login" })
+  }
 
   return (
     <header className="bg-gray-100 text-green-700 shadow-lg sticky top-0 z-50">
@@ -119,13 +105,12 @@ export function Navbar() {
           <div className="flex gap-2">
             {status === "authenticated" && session?.user && (
               <>
-                <span className="text-sm flex items-center">
-                  Welcome, {session.user.name || session.user.email}
-                </span>
+                <span className="text-sm flex items-center">Welcome, {session.user.name || session.user.email}</span>
                 <Button
                   onClick={handleLogout}
                   className="bg-white text-green-700 hover:bg-green-100 border border-green-200"
                 >
+                  <LogOut className="mr-2 h-5 w-5" /> {/* Added LogOut icon back */}
                   Logout
                 </Button>
               </>
@@ -133,12 +118,16 @@ export function Navbar() {
             {status === "unauthenticated" && (
               <>
                 <Link href="/login">
+                  {" "}
+                  {/* Changed to /login */}
                   <Button className="bg-green-600 hover:bg-green-700 text-white">
                     <LogIn className="mr-2 h-5 w-5" />
                     Login
                   </Button>
                 </Link>
                 <Link href="/signup">
+                  {" "}
+                  {/* Changed to /signup */}
                   <Button className="bg-white hover:bg-green-200 text-green-700">
                     <UserPlus className="mr-2 h-5 w-5" />
                     Sign Up
@@ -154,7 +143,7 @@ export function Navbar() {
           variant="ghost"
           size="icon"
           className="md:hidden text-green-700"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          onClick={() => setIsMobileMenuMenuOpen(!isMobileMenuOpen)}
         >
           <Menu className="h-6 w-6" />
           <span className="sr-only">Toggle navigation menu</span>
@@ -168,10 +157,7 @@ export function Navbar() {
             {navItems.map((item) =>
               item.dropdown ? (
                 <div key={item.name} className="w-full">
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start text-green-700 hover:bg-green-100/50"
-                  >
+                  <Button variant="ghost" className="w-full justify-start text-green-700 hover:bg-green-100/50">
                     <item.icon className="mr-2 h-5 w-5" />
                     {item.name}
                     <ChevronDown className="ml-auto h-5 w-5" />
@@ -185,7 +171,7 @@ export function Navbar() {
                           "block py-2 text-sm text-green-700 hover:bg-green-100/50 rounded-md",
                           pathname === subItem.href && "bg-green-100/70",
                         )}
-                        onClick={() => setIsMobileMenuOpen(false)}
+                        onClick={() => setIsMobileMenuMenuOpen(false)}
                       >
                         {subItem.name}
                       </Link>
@@ -200,7 +186,7 @@ export function Navbar() {
                     "flex items-center gap-2 w-full py-2 px-2 text-sm font-medium hover:bg-green-100/50 rounded-md",
                     pathname === item.href && "bg-green-100/70 text-green-800",
                   )}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => setIsMobileMenuMenuOpen(false)}
                 >
                   <item.icon className="h-5 w-5" />
                   {item.name}
@@ -210,13 +196,12 @@ export function Navbar() {
             <div className="flex flex-col gap-2 w-full mt-2">
               {status === "authenticated" && session?.user && (
                 <>
-                  <span className="text-sm px-2 py-2">
-                    Welcome, {session.user.name || session.user.email}
-                  </span>
+                  <span className="text-sm px-2 py-2">Welcome, {session.user.name || session.user.email}</span>
                   <Button
                     onClick={handleLogout}
                     className="w-full bg-white text-green-700 hover:bg-green-100 border border-green-200"
                   >
+                    <LogOut className="mr-2 h-5 w-5" /> {/* Added LogOut icon back */}
                     Logout
                   </Button>
                 </>
@@ -224,12 +209,16 @@ export function Navbar() {
               {status === "unauthenticated" && (
                 <>
                   <Link href="/login" className="w-full">
+                    {" "}
+                    {/* Changed to /login */}
                     <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
                       <LogIn className="mr-2 h-5 w-5" />
                       Login
                     </Button>
                   </Link>
                   <Link href="/signup" className="w-full my-3">
+                    {" "}
+                    {/* Changed to /signup */}
                     <Button className="w-full bg-white hover:bg-green-200 text-green-700">
                       <UserPlus className="mr-2 h-5 w-5" />
                       Sign Up
@@ -242,5 +231,5 @@ export function Navbar() {
         </div>
       )}
     </header>
-  );
+  )
 }

@@ -26,7 +26,7 @@ function LoginFormContent() {
     setError(null)
 
     const result = await signIn("credentials", {
-      redirect: false,
+      redirect: true, // NextAuth will now handle the redirect based on the callback in route.ts
       email,
       password,
     })
@@ -34,8 +34,6 @@ function LoginFormContent() {
     if (result?.error) {
       setError("Invalid email or password")
       console.error("Login error:", result.error)
-    } else if (result?.ok) {
-      router.push(callbackUrl)
     }
   }
 
