@@ -67,8 +67,12 @@ const memberLedgerData = {
   },
 }
 
-// Made the component async to potentially resolve the type error related to PageProps expecting a Promise
-export default async function MemberLedgerPage({ params }: { params: { id: string } }) {
+// Simple props interface
+interface MemberLedgerPageProps {
+  params: { id: string };
+}
+
+export default function MemberLedgerPage({ params }: MemberLedgerPageProps) {
   const { id } = params
   const member = memberLedgerData[id as keyof typeof memberLedgerData] || null
 
@@ -80,7 +84,7 @@ export default async function MemberLedgerPage({ params }: { params: { id: strin
             <CardTitle className="text-2xl font-bold text-green-800">Member Ledger Not Found</CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="mb-4 text-gray-600">The ledger for member ID &quot;{id}&quot; could not be found.</p>
+            <p className="mb-4 text-gray-600">The ledger for member ID "{id}" could not be found.</p>
             <Link href="/ledger/search">
               <Button className="bg-green-600 hover:bg-green-700 text-white">
                 <ArrowLeft className="mr-2 h-4 w-4" />
@@ -186,8 +190,6 @@ export default async function MemberLedgerPage({ params }: { params: { id: strin
             </Table>
           </div>
 
-          {/* Removed Signatures Section */}
-
           <div className="flex justify-end mt-8">
             <Link href="/ledger/search">
               <Button className="bg-green-50 hover:bg-green-100 text-green-700 border border-green-200">
@@ -200,12 +202,4 @@ export default async function MemberLedgerPage({ params }: { params: { id: strin
       </Card>
     </div>
   )
-}
-
-// generateStaticParams function to pre-render specific member ID paths
-export async function generateStaticParams() {
-  const memberIds = Object.keys(memberLedgerData) // Get all keys from the dummy data
-  return memberIds.map((id) => ({
-    id: id,
-  }))
 }
