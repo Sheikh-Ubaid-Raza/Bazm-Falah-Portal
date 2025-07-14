@@ -84,7 +84,7 @@ export default function MemberLedgerPage({ params }: MemberLedgerPageProps) {
             <CardTitle className="text-2xl font-bold text-green-800">Member Ledger Not Found</CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="mb-4 text-gray-600">The ledger for member ID "{id}" could not be found.</p>
+            <p className="mb-4 text-gray-600">The ledger for member ID {id} could not be found.</p>
             <Link href="/ledger/search">
               <Button className="bg-green-600 hover:bg-green-700 text-white">
                 <ArrowLeft className="mr-2 h-4 w-4" />
