@@ -20,6 +20,7 @@ import {
 import { useState, useEffect } from "react"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import Image from "next/image"
 
 interface FamilyMember {
   id: number
@@ -387,10 +388,12 @@ export default function NewMemberPage() {
                 </Label>
                 <div className="flex flex-col items-center justify-center border-2 border-dashed border-green-200 rounded-lg p-4 h-48 relative">
                   {memberPicture ? (
-                    <img
+                    <Image
                       src={memberPicture || "/placeholder.svg"}
                       alt="Member Preview"
                       className="max-h-full max-w-full object-contain rounded-md"
+                      width={250}
+                      height={250}
                     />
                   ) : (
                     <div className="text-center text-gray-500">
